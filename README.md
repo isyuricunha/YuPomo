@@ -36,19 +36,33 @@ Use the hosted web app: https://yupomo.yuricunha.com/
 ### Desktop Installation
 
 #### Windows
-1. Download the `.exe` installer from [Releases](https://github.com/isyuricunha/YuPomo/releases)
-2. Run the installer and follow the setup wizard
-3. Launch YuPomo from your Start Menu
+1. Download the Windows installer from [Releases](https://github.com/isyuricunha/YuPomo/releases):
+   - Recommended: `YuPomo_<version>_x64-setup.exe`
+   - Alternative: `YuPomo_<version>_x64_en-US.msi`
+2. Run the installer and follow the setup wizard.
+3. Launch YuPomo from your Start Menu.
 
 #### macOS
-1. Download the `.dmg` file from [Releases](https://github.com/isyuricunha/YuPomo/releases)
-2. Open the DMG and drag YuPomo to Applications
-3. Launch from Applications folder
+1. Download the `.dmg` for your chip from [Releases](https://github.com/isyuricunha/YuPomo/releases):
+   - Apple Silicon (M1/M2/M3): `YuPomo_<version>_aarch64.dmg`
+   - Intel: `YuPomo_<version>_x64.dmg`
+2. Open the DMG and drag YuPomo to Applications.
+3. Launch from the Applications folder.
 
 #### Linux
-1. Download the `.AppImage` file from [Releases](https://github.com/isyuricunha/YuPomo/releases)
-2. Make it executable: `chmod +x YuPomo.AppImage`
-3. Run: `./YuPomo.AppImage`
+Choose one of the packages from [Releases](https://github.com/isyuricunha/YuPomo/releases):
+ - Debian/Ubuntu: `yu-pomo_<version>_amd64.deb`
+ - Fedora/openSUSE/RHEL: `yu-pomo-<version>-1.x86_64.rpm`
+ - Any distro (portable): `yu-pomo_<version>_amd64.AppImage`
+
+AppImage usage:
+```bash
+chmod +x yu-pomo_<version>_amd64.AppImage
+./yu-pomo_<version>_amd64.AppImage
+```
+
+#### Notes about assets
+- Files like `*.app.tar.gz`, `*_setup.nsis.zip`, `*_msi.zip`, and `*.sig` are updater artifacts used for in‑app auto‑updates and signature verification. You do not need them for manual installation.
 
 ## 🛠️ Development
 

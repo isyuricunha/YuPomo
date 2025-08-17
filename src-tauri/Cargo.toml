@@ -3,10 +3,10 @@ name = "YuPomo"
 version = "0.1.29"
 description = "Boost productivity, one cycle at a time."
 authors = ["Yuri Cunha"]
-license = ""
-repository = ""
+license = "LGPL-2.1 license"
+repository = "https://github.com/isyuricunha/YuPomo"
 default-run = "YuPomo"
-edition = "2021"
+edition = "2025"
 rust-version = "1.60"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
