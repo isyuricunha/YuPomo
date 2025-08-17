@@ -84,7 +84,9 @@ body {
   width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
   background-clip: padding-box;
+  display: grid; place-items: center;
 }
+.yupomo-tb-btn svg { width: 10px; height: 10px; stroke: rgba(0,0,0,0.8); }
 .yupomo-tb-hit {
   display: inline-flex; align-items: center; justify-content: center;
   width: 28px; height: 24px; /* larger hit area */
