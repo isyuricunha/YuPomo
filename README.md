@@ -5,6 +5,7 @@ A beautiful, minimalist Pomodoro timer built with React, TypeScript, Vite, and T
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/isyuricunha/YuPomo)
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/isyuricunha/YuPomo)
 ![License](https://img.shields.io/github/license/isyuricunha/YuPomo)
+![Downloads](https://img.shields.io/github/downloads/isyuricunha/YuPomo/total?color=blue&label=downloads)
 
 —
 
