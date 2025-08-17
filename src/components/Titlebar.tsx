@@ -15,13 +15,15 @@ export default function Titlebar() {
   // Programmatic drag fallback for Windows/WebView2
   const handleDragMouseDown = async (e: MouseEvent<HTMLDivElement>) => {
     if (e.button !== 0) return // left click only
+    const target = e.target as Element | null
+    if (target && target.closest('[data-tauri-no-drag]')) return
     try {
       await appWindow.startDragging()
     } catch {}
   }
 
   return (
-    <div className="yupomo-titlebar" data-tauri-drag-region onDoubleClick={toggleMax} onMouseDown={handleDragMouseDown}>
+    <div className="yupomo-titlebar" data-tauri-drag-region onDoubleClick={toggleMax}>
       {/* Absolutely position window controls; mark as no-drag */}
       <div className="yupomo-traffic" data-tauri-no-drag aria-label="Window controls">
         <button className="yupomo-tb-btn close" data-tauri-no-drag onClick={() => appWindow.close()} aria-label="Close" />
