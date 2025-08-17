@@ -102,13 +102,23 @@ body {
 .yupomo-tb-btn.min { background: #ffbd2e; }
 .yupomo-tb-btn.max { background: #28c840; }
 
-/* offset app content so it doesn't sit under the fixed titlebar */
+/* offset app content so it doesn't sit under the fixed titlebar (web default) */
 #root { padding-top: calc(2rem + 32px); }
+
+/* Desktop (Tauri): reduce padding so content isn't pushed too far down */
+.tauri #root {
+  padding: 8px;          /* smaller overall padding */
+  padding-top: 32px;     /* exactly the titlebar height */
+  max-width: none;       /* don't cap width in desktop */
+  margin: 0;             /* remove auto-centering */
+  text-align: initial;   /* normal alignment */
+}
 
 /* --- Desktop (Tauri) specific adjustments --- */
 /* Remove OS scrollbars in desktop app window */
 .tauri body {
   overflow: hidden;
+  display: block; /* avoid flex centering in desktop */
 }
 
 /* On desktop, prevent inner panes from creating their own scrollbars */
