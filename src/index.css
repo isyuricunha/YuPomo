@@ -61,9 +61,16 @@ body {
   align-items: center;
   justify-content: center;
   padding: 0 8px;
-  background: transparent;
+  /* Ensure the drag region is hit-testable in WebView2 */
+  background: rgba(0,0,0,0.001);
+  pointer-events: auto;
   color: inherit;
   z-index: 100; /* above overlays */
+}
+
+/* Make any explicit drag-region inside the titlebar draggable as well */
+.yupomo-titlebar [data-tauri-drag-region] {
+  -webkit-app-region: drag;
 }
 
 .yupomo-traffic {

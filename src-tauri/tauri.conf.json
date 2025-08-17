@@ -29,7 +29,8 @@
         "setSize": true,
         "setMinSize": true,
         "setResizable": true,
-        "setFocus": true
+        "setFocus": true,
+        "startDragging": true
       },
       "fs": {
         "all": false,
