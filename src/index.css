@@ -18,25 +18,28 @@
   -webkit-text-size-adjust: 100%;
 }
 
+/* Ensure the app occupies the full viewport without gaps */
+html, body, #root {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  max-width: none;
+  padding: 0;
+  min-height: 100vh;
 }
 
 /* Theme-scoped body colors for true black dark mode */
 /* Default to dark background to match app's default theme */
 body {
-  background-color: #000; /* true black */
+  background-color: #000; /* true black on web */
   color: #e5e5e5; /* neutral-200/300 equivalent */
 }
 
@@ -102,16 +105,16 @@ body {
 .yupomo-tb-btn.min { background: #ffbd2e; }
 .yupomo-tb-btn.max { background: #28c840; }
 
-/* offset app content so it doesn't sit under the fixed titlebar (web default) */
-#root { padding-top: calc(2rem + 32px); }
+/* offset app content so it doesn't sit under the fixed titlebar */
+#root { padding-top: 32px; }
 
 /* Desktop (Tauri): reduce padding so content isn't pushed too far down */
 .tauri #root {
-  padding: 8px;          /* smaller overall padding */
+  padding: 0;            /* no outer padding */
   padding-top: 32px;     /* exactly the titlebar height */
-  max-width: none;       /* don't cap width in desktop */
-  margin: 0;             /* remove auto-centering */
-  text-align: initial;   /* normal alignment */
+  max-width: none;
+  margin: 0;
+  background: #000 !important; /* app owns full window */
 }
 
 /* --- Desktop (Tauri) specific adjustments --- */
@@ -119,12 +122,15 @@ body {
 .tauri body {
   overflow: hidden;
   display: block; /* avoid flex centering in desktop */
+  background: #000 !important; /* solid background (no transparent window) */
 }
 
 /* On desktop, prevent inner panes from creating their own scrollbars */
 .tauri .yupomo-pane {
+  width: 100% !important;
+  height: calc(100vh - 32px) !important; /* full window minus titlebar */
   max-height: none !important;
-  overflow: visible !important;
+  overflow: auto !important;
 }
 
 /* On desktop, move modal overlay below the fixed titlebar to keep buttons clickable */

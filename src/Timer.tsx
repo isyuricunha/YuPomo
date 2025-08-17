@@ -1,4 +1,4 @@
-import { memo, useEffect, useRef, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from './contexts/ThemeContext'
 import Settings from './components/Settings'
@@ -190,13 +190,15 @@ const Timer = () => {
     })()
   }, [showSettings, showStatistics])
 
+  // No auto-fit sizing on desktop; the app fills the window
+
   return (
-    <div className={`min-h-screen transition-colors duration-500 flex items-center justify-center p-4`}>
-      <div className={`yupomo-pane rounded-3xl shadow-2xl p-6 sm:p-8 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto transition-colors duration-500 ${
-        theme === 'dark'
-          ? 'bg-neutral-950 border border-neutral-800'
-          : 'bg-white border border-neutral-200'
-      }`}>
+    <div className={`${isTauri ? 'transition-colors duration-500 p-0' : 'min-h-screen h-full transition-colors duration-500 p-0'}`}>
+      <div className={`yupomo-pane transition-colors duration-500 ${
+        isTauri
+          ? (theme === 'dark' ? 'bg-neutral-950' : 'bg-white')
+          : (theme === 'dark' ? 'bg-neutral-950' : 'bg-white')
+      } ${isTauri ? 'w-full h-full mx-0 p-6 sm:p-8 overflow-auto' : 'w-full h-full mx-0 p-6 sm:p-8 overflow-auto'}`}>
         {/* Minimal Header Bar */}
         <HeaderBar
           onOpenStats={() => setShowStatistics(true)}

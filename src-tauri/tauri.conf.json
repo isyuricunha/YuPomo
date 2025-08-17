@@ -76,6 +76,7 @@
         "resizable": true,
         "title": "YuPomo",
         "decorations": false,
+        "transparent": false,
         "width": 400,
         "height": 600,
         "minWidth": 350,
