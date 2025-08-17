@@ -1,6 +1,6 @@
 [package]
 name = "YuPomo"
-version = "0.1.33"
+version = "0.1.34"
 description = "Boost productivity, one cycle at a time."
 authors = ["Yuri Cunha"]
 license = "LGPL-2.1 license"
