@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useTheme } from './contexts/ThemeContext'
 import Settings from './components/Settings'
@@ -170,9 +170,13 @@ const Timer = () => {
         const winMod = await import('@tauri-apps/api/window')
         const { appWindow } = winMod
         const LogicalSizeCtor: any = (winMod as any).LogicalSize
+        // If maximized, do not change size; keep the user's maximized state
+        try {
+          if (await appWindow.isMaximized()) {
+            return
+          }
+        } catch {}
         const applySize = async (w: number, h: number) => {
-          // Ensure not maximized; resizing a maximized window is ignored
-          try { if (await appWindow.isMaximized()) await appWindow.unmaximize() } catch {/* ignore */}
           try { await appWindow.setFocus() } catch {/* ignore */}
           if (LogicalSizeCtor) await appWindow.setSize(new LogicalSizeCtor(w, h))
           else await appWindow.setSize({ width: w, height: h } as any)
