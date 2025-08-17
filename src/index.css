@@ -74,9 +74,12 @@ body {
 }
 
 .yupomo-traffic {
-  display: flex; gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px; /* tighter spacing */
   -webkit-app-region: no-drag; /* allow clicks */
-  position: relative;
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  height: 100%;
   z-index: 101;
 }
 .yupomo-tb-btn {
@@ -89,7 +92,7 @@ body {
 .yupomo-tb-btn svg { width: 10px; height: 10px; stroke: rgba(0,0,0,0.8); }
 .yupomo-tb-hit {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 28px; height: 24px; /* larger hit area */
+  width: 28px; height: 24px; /* large hit area retained for usability */
   border-radius: 6px;
 }
 .yupomo-tb-hit:hover {
