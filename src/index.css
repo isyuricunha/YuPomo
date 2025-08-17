@@ -77,33 +77,42 @@ body {
 }
 
 .yupomo-traffic {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 4px; /* tighter spacing */
+  gap: 6px;
   -webkit-app-region: no-drag; /* allow clicks */
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-  height: 100%;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: saturate(120%) blur(6px);
+  -webkit-backdrop-filter: saturate(120%) blur(6px);
   z-index: 101;
 }
 .yupomo-tb-btn {
   -webkit-app-region: no-drag; /* ensure clickable */
-  width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+  width: 16px; height: 16px; border-radius: 9999px; border: none; cursor: pointer;
   background-clip: padding-box;
   display: grid; place-items: center;
+  background: rgba(255,255,255,0.10);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), inset 0 0 0 2px rgba(0,0,0,0.10);
+  transition: background 140ms ease, box-shadow 140ms ease, filter 140ms ease;
 }
-.yupomo-tb-btn svg { width: 10px; height: 10px; stroke: rgba(0,0,0,0.8); }
+.yupomo-tb-btn:hover { background: rgba(255,255,255,0.16); }
+.yupomo-tb-btn:active { background: rgba(255,255,255,0.12); filter: brightness(0.98); }
+.yupomo-tb-btn:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(255,255,255,0.08), inset 0 0 0 2px rgba(255,255,255,0.08); }
+.yupomo-tb-btn svg { width: 9px; height: 9px; stroke: rgba(255,255,255,0.92); opacity: 0.95; }
 .yupomo-tb-hit {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 28px; height: 24px; /* large hit area retained for usability */
+  width: 26px; height: 22px;
   border-radius: 6px;
 }
-.yupomo-tb-hit:hover {
-  background: rgba(255,255,255,0.08);
-}
-.yupomo-tb-btn.close { background: #ff5f57; }
-.yupomo-tb-btn.min { background: #ffbd2e; }
-.yupomo-tb-btn.max { background: #28c840; }
+/* Neutral monochrome: no traffic-light colors */
+.yupomo-tb-btn.close,
+.yupomo-tb-btn.min,
+.yupomo-tb-btn.max { background: rgba(255,255,255,0.10); }
 
 /* offset app content so it doesn't sit under the fixed titlebar */
 #root { padding-top: 32px; }
