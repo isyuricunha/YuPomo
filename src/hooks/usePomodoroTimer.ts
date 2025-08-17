@@ -60,7 +60,7 @@ export const usePomodoroTimer = () => {
         file = '/sounds/break.mp3'
         break
       case 'breakToWork':
-        file = '/sounds/end-break.mp3'
+        file = '/sounds/complete.mp3'
         break
       case 'newCycle':
         file = '/sounds/new-cycle.mp3'

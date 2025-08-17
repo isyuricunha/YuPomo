@@ -27,7 +27,7 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
   })
 
   useEffect(() => {
-    try { localStorage.setItem('yupomo-auto-update', String(autoUpdateEnabled)) } catch {/* ignore */}
+    try { localStorage.setItem('yupomo-auto-update', String(autoUpdateEnabled)) } catch {/* ignore */ }
   }, [autoUpdateEnabled])
 
   if (!isOpen) return null
@@ -98,7 +98,7 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
       if (latest?.htmlUrl) {
         try {
           window.open(latest.htmlUrl, '_blank', 'noopener,noreferrer')
-        } catch {/* ignore */}
+        } catch {/* ignore */ }
       }
     }
   }
@@ -111,25 +111,22 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
 
   return (
     <div className="yupomo-overlay fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 z-50">
-      <div className={`yupomo-pane rounded-2xl shadow-2xl p-3 max-w-md w-full mx-3 max-h-[90vh] overflow-y-auto transition-colors duration-300 ${
-        theme === 'dark'
+      <div className={`yupomo-pane rounded-2xl shadow-2xl p-3 max-w-md w-full mx-3 max-h-[90vh] overflow-y-auto transition-colors duration-300 ${theme === 'dark'
           ? 'bg-neutral-950 border border-neutral-800'
           : 'bg-white border border-gray-200'
-      }`}>
+        }`}>
         {/* Header */}
         <div className="flex justify-between items-center mb-3">
-          <h2 className={`text-xl font-semibold ${
-            theme === 'dark' ? 'text-amber-400' : 'text-gray-800'
-          }`}>
+          <h2 className={`text-xl font-semibold ${theme === 'dark' ? 'text-amber-400' : 'text-gray-800'
+            }`}>
             ⚙️ {t('settings.title')}
           </h2>
           <button
             onClick={onClose}
-            className={`p-2 rounded-md transition-colors ${
-              theme === 'dark'
+            className={`p-2 rounded-md transition-colors ${theme === 'dark'
                 ? 'text-neutral-400 hover:bg-neutral-900'
                 : 'text-gray-600 hover:bg-gray-100'
-            }`}
+              }`}
           >
             ✕
           </button>
@@ -139,23 +136,20 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
         <div className="space-y-4">
           {/* Language */}
           <div>
-            <h3 className={`text-sm font-medium mb-2 ${
-              theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
-            }`}>
+            <h3 className={`text-sm font-medium mb-2 ${theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
+              }`}>
               {t('settings.language')}
             </h3>
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <label className={`font-medium min-w-0 ${
-                theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
-              }`}>
+              <label className={`font-medium min-w-0 ${theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
+                }`}>
                 🌐
               </label>
               <select
                 value={lang}
                 onChange={(e) => setLang(e.target.value)}
-                className={`px-2 py-1 rounded-lg ${
-                  theme === 'dark' ? 'bg-neutral-900 border border-neutral-800 text-neutral-100' : 'bg-gray-50 border border-gray-300 text-gray-900'
-                }`}
+                className={`px-2 py-1 rounded-lg ${theme === 'dark' ? 'bg-neutral-900 border border-neutral-800 text-neutral-100' : 'bg-gray-50 border border-gray-300 text-gray-900'
+                  }`}
               >
                 <option value="en">{t('languages.en')}</option>
                 <option value="pt-BR">{t('languages.pt-BR')}</option>
@@ -176,18 +170,16 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
             </div>
           </div>
           <div>
-            <h3 className={`text-sm font-medium mb-2 ${
-              theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
-            }`}>
+            <h3 className={`text-sm font-medium mb-2 ${theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
+              }`}>
               {t('settings.timerDurations')}
             </h3>
-            
+
             <div className="space-y-3">
               {/* Work Duration */}
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <label className={`font-medium min-w-0 ${
-                  theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
-                }`}>
+                <label className={`font-medium min-w-0 ${theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
+                  }`}>
                   🍅 {t('settings.workSession')}
                 </label>
                 <div className="flex items-center space-x-2">
@@ -197,15 +189,13 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
                     max="60"
                     value={tempSettings.work}
                     onChange={(e) => handleInputChange('work', parseInt(e.target.value) || 1)}
-                    className={`w-16 px-2 py-1 rounded-lg text-center font-mono ${
-                      theme === 'dark'
+                    className={`w-16 px-2 py-1 rounded-lg text-center font-mono ${theme === 'dark'
                         ? 'bg-neutral-900 border border-neutral-800 text-neutral-100'
                         : 'bg-gray-50 border border-gray-300 text-gray-900'
-                    }`}
+                      }`}
                   />
-                  <span className={`text-sm ${
-                    theme === 'dark' ? 'text-neutral-500' : 'text-gray-500'
-                  }`}>
+                  <span className={`text-sm ${theme === 'dark' ? 'text-neutral-500' : 'text-gray-500'
+                    }`}>
                     {t('settings.minutes')}
                   </span>
                 </div>
@@ -213,9 +203,8 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
 
               {/* Short Break Duration */}
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <label className={`font-medium min-w-0 ${
-                  theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
-                }`}>
+                <label className={`font-medium min-w-0 ${theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
+                  }`}>
                   ☕ {t('settings.shortBreak')}
                 </label>
                 <div className="flex items-center space-x-2">
@@ -225,15 +214,13 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
                     max="30"
                     value={tempSettings.shortBreak}
                     onChange={(e) => handleInputChange('shortBreak', parseInt(e.target.value) || 1)}
-                    className={`w-16 px-2 py-1 rounded-lg text-center font-mono ${
-                      theme === 'dark'
+                    className={`w-16 px-2 py-1 rounded-lg text-center font-mono ${theme === 'dark'
                         ? 'bg-neutral-900 border border-neutral-800 text-neutral-100'
                         : 'bg-gray-50 border border-gray-300 text-gray-900'
-                    }`}
+                      }`}
                   />
-                  <span className={`text-sm ${
-                    theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-                  }`}>
+                  <span className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                    }`}>
                     {t('settings.minutes')}
                   </span>
                 </div>
@@ -241,9 +228,8 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
 
               {/* Long Break Duration */}
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <label className={`font-medium min-w-0 ${
-                  theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
-                }`}>
+                <label className={`font-medium min-w-0 ${theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
+                  }`}>
                   🌟 {t('settings.longBreak')}
                 </label>
                 <div className="flex items-center space-x-2">
@@ -253,15 +239,13 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
                     max="60"
                     value={tempSettings.longBreak}
                     onChange={(e) => handleInputChange('longBreak', parseInt(e.target.value) || 1)}
-                    className={`w-16 px-2 py-1 rounded-lg text-center font-mono ${
-                      theme === 'dark'
+                    className={`w-16 px-2 py-1 rounded-lg text-center font-mono ${theme === 'dark'
                         ? 'bg-neutral-900 border border-neutral-800 text-neutral-100'
                         : 'bg-gray-50 border border-gray-300 text-gray-900'
-                    }`}
+                      }`}
                   />
-                  <span className={`text-sm ${
-                    theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
-                  }`}>
+                  <span className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'
+                    }`}>
                     {t('settings.minutes')}
                   </span>
                 </div>
@@ -274,32 +258,28 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
 
           {/* Notification Settings */}
           <div>
-            <h3 className={`text-sm font-medium mb-2 ${
-              theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
-            }`}>
+            <h3 className={`text-sm font-medium mb-2 ${theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
+              }`}>
               {t('settings.notificationsAndSound')}
             </h3>
 
             <div className="space-y-3">
               {/* Sound Toggle */}
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <label className={`font-medium min-w-0 ${
-                  theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
-                }`}>
+                <label className={`font-medium min-w-0 ${theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
+                  }`}>
                   🔊 {t('settings.soundAlerts')}
                 </label>
                 <button
                   onClick={() => handleInputChange('soundEnabled', !tempSettings.soundEnabled)}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    tempSettings.soundEnabled
+                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${tempSettings.soundEnabled
                       ? theme === 'dark' ? 'bg-amber-500' : 'bg-blue-600'
                       : theme === 'dark' ? 'bg-neutral-700' : 'bg-gray-300'
-                  }`}
+                    }`}
                 >
                   <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      tempSettings.soundEnabled ? 'translate-x-6' : 'translate-x-1'
-                    }`}
+                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${tempSettings.soundEnabled ? 'translate-x-6' : 'translate-x-1'
+                      }`}
                   />
                 </button>
               </div>
@@ -350,7 +330,7 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
                     </button>
                     <button
                       type="button"
-                      onClick={() => playNotificationSound({ volume: typeof tempSettings.soundVolume === 'number' ? tempSettings.soundVolume : 0.3, sourceUrl: '/sounds/end-break.mp3' })}
+                      onClick={() => playNotificationSound({ volume: typeof tempSettings.soundVolume === 'number' ? tempSettings.soundVolume : 0.3, sourceUrl: '/sounds/complete.mp3' })}
                       className={`${theme === 'dark' ? 'bg-neutral-900 hover:bg-neutral-800 text-neutral-200 border border-neutral-800' : 'bg-gray-100 hover:bg-gray-200 text-gray-800'} px-3 py-2 rounded-lg text-sm text-left`}
                     >
                       ✅ {t('sound.endBreak')}
@@ -361,23 +341,20 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
 
               {/* Notifications Toggle */}
               <div className="flex flex-wrap items-center justify-between gap-3">
-                <label className={`font-medium min-w-0 ${
-                  theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
-                }`}>
+                <label className={`font-medium min-w-0 ${theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
+                  }`}>
                   🔔 {t('settings.desktopNotifications')}
                 </label>
                 <button
                   onClick={() => handleInputChange('notificationsEnabled', !tempSettings.notificationsEnabled)}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    tempSettings.notificationsEnabled
+                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${tempSettings.notificationsEnabled
                       ? theme === 'dark' ? 'bg-amber-500' : 'bg-blue-600'
                       : theme === 'dark' ? 'bg-neutral-700' : 'bg-gray-300'
-                  }`}
+                    }`}
                 >
                   <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      tempSettings.notificationsEnabled ? 'translate-x-6' : 'translate-x-1'
-                    }`}
+                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${tempSettings.notificationsEnabled ? 'translate-x-6' : 'translate-x-1'
+                      }`}
                   />
                 </button>
               </div>
@@ -388,21 +365,19 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
           <div className="flex flex-col sm:flex-row gap-3 pt-3">
             <button
               onClick={handleReset}
-              className={`flex-1 py-2.5 px-4 rounded-xl font-medium transition-colors ${
-                theme === 'dark'
+              className={`flex-1 py-2.5 px-4 rounded-xl font-medium transition-colors ${theme === 'dark'
                   ? 'bg-neutral-900 hover:bg-neutral-800 text-neutral-300 border border-neutral-800'
                   : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-              }`}
+                }`}
             >
               🔄 {t('settings.reset')}
             </button>
             <button
               onClick={handleSave}
-              className={`flex-1 py-2.5 px-4 rounded-xl font-semibold transition-colors ${
-                theme === 'dark'
+              className={`flex-1 py-2.5 px-4 rounded-xl font-semibold transition-colors ${theme === 'dark'
                   ? 'bg-amber-500 hover:bg-amber-400 text-black'
                   : 'bg-blue-600 hover:bg-blue-700 text-white'
-              }`}
+                }`}
             >
               💾 {t('settings.save')}
             </button>
@@ -414,9 +389,8 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
 
         {/* Updates */}
         <div>
-          <h3 className={`text-sm font-medium mb-3 ${
-            theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
-          }`}>
+          <h3 className={`text-sm font-medium mb-3 ${theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
+            }`}>
             {t('updates.title')}
           </h3>
           <div className="space-y-2.5">
@@ -427,11 +401,10 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
               <button
                 onClick={handleCheckUpdates}
                 disabled={checkingUpdate}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  theme === 'dark'
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${theme === 'dark'
                     ? 'bg-neutral-900 hover:bg-neutral-800 text-neutral-200 border border-neutral-800'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
-                } ${checkingUpdate ? 'opacity-60 cursor-not-allowed' : ''}`}
+                  } ${checkingUpdate ? 'opacity-60 cursor-not-allowed' : ''}`}
               >
                 {checkingUpdate ? t('updates.checking') : t('updates.checkNow')}
               </button>
@@ -450,11 +423,10 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
                 </a>
                 <button
                   onClick={handleInstallUpdate}
-                  className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                    theme === 'dark'
+                  className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${theme === 'dark'
                       ? 'bg-amber-500 hover:bg-amber-400 text-black'
                       : 'bg-blue-600 hover:bg-blue-700 text-white'
-                  }`}
+                    }`}
                 >
                   {t('updates.downloadAndInstall')}
                 </button>
@@ -468,16 +440,14 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
               </label>
               <button
                 onClick={() => setAutoUpdateEnabled(v => !v)}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                  autoUpdateEnabled
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${autoUpdateEnabled
                     ? theme === 'dark' ? 'bg-amber-500' : 'bg-blue-600'
                     : theme === 'dark' ? 'bg-neutral-700' : 'bg-gray-300'
-                }`}
+                  }`}
               >
                 <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                    autoUpdateEnabled ? 'translate-x-6' : 'translate-x-1'
-                  }`}
+                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${autoUpdateEnabled ? 'translate-x-6' : 'translate-x-1'
+                    }`}
                 />
               </button>
             </div>
