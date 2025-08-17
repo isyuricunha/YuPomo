@@ -100,6 +100,13 @@ const Timer = () => {
   const { theme, toggleTheme } = useTheme()
   const { hasUpdate, latest } = useUpdateCheck()
 
+  const isTauri = typeof window !== 'undefined' && '__TAURI_IPC__' in window
+
+  // Window sizing presets (logical pixels)
+  const baseSize = { width: 480, height: 600 }
+  const settingsSize = { width: 500, height: 620 }
+  const statsSize = { width: 780, height: 660 }
+
   const {
     status,
     timeLeft,
@@ -136,9 +143,52 @@ const Timer = () => {
     return () => { cancelled = true }
   }, [hasUpdate, latest])
 
+  // Enforce minimum window size once on mount (desktop only)
+  useEffect(() => {
+    if (!isTauri) return
+    ;(async () => {
+      try {
+        const winMod = await import('@tauri-apps/api/window')
+        const { appWindow } = winMod
+        await appWindow.setResizable(true)
+        // Prefer LogicalSize from window module (Tauri v1). No subpath imports to avoid Vite resolution errors.
+        const LogicalSizeCtor: any = (winMod as any).LogicalSize
+        if (LogicalSizeCtor) await appWindow.setMinSize(new LogicalSizeCtor(baseSize.width, baseSize.height))
+        else await appWindow.setMinSize({ width: baseSize.width, height: baseSize.height } as any)
+      } catch {
+        // ignore if not available
+      }
+    })()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Resize the window when opening/closing Settings or Statistics (desktop only)
+  useEffect(() => {
+    if (!isTauri) return
+    ;(async () => {
+      try {
+        const winMod = await import('@tauri-apps/api/window')
+        const { appWindow } = winMod
+        const LogicalSizeCtor: any = (winMod as any).LogicalSize
+        const applySize = async (w: number, h: number) => {
+          // Ensure not maximized; resizing a maximized window is ignored
+          try { if (await appWindow.isMaximized()) await appWindow.unmaximize() } catch {/* ignore */}
+          try { await appWindow.setFocus() } catch {/* ignore */}
+          if (LogicalSizeCtor) await appWindow.setSize(new LogicalSizeCtor(w, h))
+          else await appWindow.setSize({ width: w, height: h } as any)
+        }
+        if (showStatistics) await applySize(statsSize.width, statsSize.height)
+        else if (showSettings) await applySize(settingsSize.width, settingsSize.height)
+        else await applySize(baseSize.width, baseSize.height)
+      } catch {
+        // ignore if not available
+      }
+    })()
+  }, [showSettings, showStatistics])
+
   return (
     <div className={`min-h-screen transition-colors duration-500 flex items-center justify-center p-4`}>
-      <div className={`rounded-3xl shadow-2xl p-6 sm:p-8 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto transition-colors duration-500 ${
+      <div className={`yupomo-pane rounded-3xl shadow-2xl p-6 sm:p-8 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto transition-colors duration-500 ${
         theme === 'dark'
           ? 'bg-neutral-950 border border-neutral-800'
           : 'bg-white border border-neutral-200'

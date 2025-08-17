@@ -110,14 +110,14 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
   // no upload support; sounds should be placed under /sounds and referenced by filename
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className={`rounded-2xl shadow-2xl p-4 sm:p-6 max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto transition-colors duration-300 ${
+    <div className="yupomo-overlay fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 z-50">
+      <div className={`yupomo-pane rounded-2xl shadow-2xl p-3 max-w-md w-full mx-3 max-h-[90vh] overflow-y-auto transition-colors duration-300 ${
         theme === 'dark'
           ? 'bg-neutral-950 border border-neutral-800'
           : 'bg-white border border-gray-200'
       }`}>
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-3">
           <h2 className={`text-xl font-semibold ${
             theme === 'dark' ? 'text-amber-400' : 'text-gray-800'
           }`}>
@@ -136,15 +136,15 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
         </div>
 
         {/* Timer Settings */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           {/* Language */}
           <div>
-            <h3 className={`text-sm font-medium mb-4 ${
+            <h3 className={`text-sm font-medium mb-2 ${
               theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
             }`}>
               {t('settings.language')}
             </h3>
-            <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <label className={`font-medium min-w-0 ${
                 theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
               }`}>
@@ -153,7 +153,7 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
               <select
                 value={lang}
                 onChange={(e) => setLang(e.target.value)}
-                className={`px-3 py-2 rounded-lg ${
+                className={`px-2 py-1 rounded-lg ${
                   theme === 'dark' ? 'bg-neutral-900 border border-neutral-800 text-neutral-100' : 'bg-gray-50 border border-gray-300 text-gray-900'
                 }`}
               >
@@ -176,15 +176,15 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
             </div>
           </div>
           <div>
-            <h3 className={`text-sm font-medium mb-4 ${
+            <h3 className={`text-sm font-medium mb-2 ${
               theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
             }`}>
               {t('settings.timerDurations')}
             </h3>
             
-            <div className="space-y-4">
+            <div className="space-y-3">
               {/* Work Duration */}
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <label className={`font-medium min-w-0 ${
                   theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
                 }`}>
@@ -212,7 +212,7 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
               </div>
 
               {/* Short Break Duration */}
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <label className={`font-medium min-w-0 ${
                   theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
                 }`}>
@@ -240,7 +240,7 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
               </div>
 
               {/* Long Break Duration */}
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <label className={`font-medium min-w-0 ${
                   theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
                 }`}>
@@ -270,19 +270,19 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
           </div>
 
           {/* Divider */}
-          <div className={`${theme === 'dark' ? 'border-neutral-800' : 'border-gray-200'} border-t my-4`} />
+          <div className={`${theme === 'dark' ? 'border-neutral-800' : 'border-gray-200'} border-t my-2`} />
 
           {/* Notification Settings */}
           <div>
-            <h3 className={`text-sm font-medium mb-4 ${
+            <h3 className={`text-sm font-medium mb-2 ${
               theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
             }`}>
               {t('settings.notificationsAndSound')}
             </h3>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {/* Sound Toggle */}
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <label className={`font-medium min-w-0 ${
                   theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'
                 }`}>
@@ -306,8 +306,8 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
 
               {/* Volume Slider */}
               {tempSettings.soundEnabled && (
-                <div className="space-y-3">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
                     <label className={`${theme === 'dark' ? 'text-neutral-300' : 'text-gray-600'} font-medium`}>🔈 {t('sound.volume')}</label>
                     <input
                       type="range"
@@ -324,7 +324,7 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
 
               {/* Quick preview of default sounds */}
               {tempSettings.soundEnabled && (
-                <div className="mt-3 space-y-2">
+                <div className="mt-1 space-y-2">
                   <div className={`${theme === 'dark' ? 'text-neutral-400' : 'text-gray-600'} text-sm`}>{t('sound.quickPreview')}</div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <button
@@ -385,10 +385,10 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 pt-4">
+          <div className="flex flex-col sm:flex-row gap-3 pt-3">
             <button
               onClick={handleReset}
-              className={`flex-1 py-3 px-4 rounded-xl font-medium transition-colors ${
+              className={`flex-1 py-2.5 px-4 rounded-xl font-medium transition-colors ${
                 theme === 'dark'
                   ? 'bg-neutral-900 hover:bg-neutral-800 text-neutral-300 border border-neutral-800'
                   : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
@@ -398,7 +398,7 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
             </button>
             <button
               onClick={handleSave}
-              className={`flex-1 py-3 px-4 rounded-xl font-semibold transition-colors ${
+              className={`flex-1 py-2.5 px-4 rounded-xl font-semibold transition-colors ${
                 theme === 'dark'
                   ? 'bg-amber-500 hover:bg-amber-400 text-black'
                   : 'bg-blue-600 hover:bg-blue-700 text-white'
@@ -410,16 +410,16 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
         </div>
 
         {/* Divider */}
-        <div className={`${theme === 'dark' ? 'border-neutral-800' : 'border-gray-200'} border-t my-4`} />
+        <div className={`${theme === 'dark' ? 'border-neutral-800' : 'border-gray-200'} border-t my-3`} />
 
         {/* Updates */}
         <div>
-          <h3 className={`text-sm font-medium mb-4 ${
+          <h3 className={`text-sm font-medium mb-3 ${
             theme === 'dark' ? 'text-neutral-300' : 'text-gray-700'
           }`}>
             {t('updates.title')}
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className={`text-sm ${theme === 'dark' ? 'text-neutral-400' : 'text-gray-600'}`}>
                 {updateStatus || t('updates.manualPrompt')}

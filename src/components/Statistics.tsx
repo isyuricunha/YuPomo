@@ -161,14 +161,14 @@ const Statistics = ({ isOpen, onClose }: StatisticsProps) => {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className={`rounded-2xl shadow-2xl p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto transition-colors duration-300 ${
+    <div className="yupomo-overlay fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 z-50">
+      <div className={`yupomo-pane rounded-2xl shadow-2xl p-4 max-w-4xl w-full mx-3 max-h-[90vh] overflow-y-auto transition-colors duration-300 ${
         theme === 'dark'
           ? 'bg-neutral-950 border border-neutral-800'
           : 'bg-white border border-gray-200'
       }`}>
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-4">
           <h2 className={`text-xl font-semibold ${
             theme === 'dark' ? 'text-amber-400' : 'text-gray-800'
           }`}>
@@ -187,12 +187,12 @@ const Statistics = ({ isOpen, onClose }: StatisticsProps) => {
         </div>
 
         {/* Stats Overview */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className={`p-4 rounded-xl ${
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+          <div className={`p-3 rounded-xl ${
             theme === 'dark' ? 'bg-neutral-900 border border-neutral-800' : 'bg-gray-50'
           }`}>
             <div className="text-center">
-              <div className={`font-mono tabular-nums text-4xl md:text-5xl font-semibold ${
+              <div className={`font-mono tabular-nums text-3xl md:text-4xl font-semibold ${
                 theme === 'dark' ? 'text-amber-400' : 'text-blue-600'
               }`}>
                 {todaySessions}
@@ -209,7 +209,7 @@ const Statistics = ({ isOpen, onClose }: StatisticsProps) => {
             theme === 'dark' ? 'bg-neutral-900 border border-neutral-800' : 'bg-gray-50'
           }`}>
             <div className="text-center">
-              <div className={`font-mono tabular-nums text-4xl md:text-5xl font-semibold ${
+              <div className={`font-mono tabular-nums text-3xl md:text-4xl font-semibold ${
                 theme === 'dark' ? 'text-amber-400' : 'text-blue-600'
               }`}>
                 {weeklyTotal}
@@ -226,7 +226,7 @@ const Statistics = ({ isOpen, onClose }: StatisticsProps) => {
             theme === 'dark' ? 'bg-neutral-900 border border-neutral-800' : 'bg-gray-50'
           }`}>
             <div className="text-center">
-              <div className={`font-mono tabular-nums text-4xl md:text-5xl font-semibold ${
+              <div className={`font-mono tabular-nums text-3xl md:text-4xl font-semibold ${
                 theme === 'dark' ? 'text-amber-400' : 'text-blue-600'
               }`}>
                 {totalSessions}
@@ -241,7 +241,7 @@ const Statistics = ({ isOpen, onClose }: StatisticsProps) => {
         </div>
 
         {/* Period Toggle */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-4">
           <div className={`flex rounded-lg p-1 ${
             theme === 'dark' ? 'bg-neutral-900 border border-neutral-800' : 'bg-gray-100'
           }`}>
@@ -277,17 +277,17 @@ const Statistics = ({ isOpen, onClose }: StatisticsProps) => {
         </div>
 
         {/* Charts Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Daily Sessions Chart */}
           <div className={`p-4 rounded-xl ${
             theme === 'dark' ? 'bg-neutral-900 border border-neutral-800' : 'bg-gray-50'
           }`}>
-            <h3 className={`text-lg font-semibold mb-4 ${
+            <h3 className={`text-lg font-semibold mb-3 ${
               theme === 'dark' ? 'text-neutral-200' : 'text-gray-700'
             }`}>
               {t('stats.dailyWorkSessions')}
             </h3>
-            <div className="h-64">
+            <div className="h-48">
               <Bar data={barChartData} options={chartOptions} />
             </div>
           </div>
@@ -296,12 +296,12 @@ const Statistics = ({ isOpen, onClose }: StatisticsProps) => {
           <div className={`p-4 rounded-xl ${
             theme === 'dark' ? 'bg-neutral-900 border border-neutral-800' : 'bg-gray-50'
           }`}>
-            <h3 className={`text-lg font-semibold mb-4 ${
+            <h3 className={`text-lg font-semibold mb-3 ${
               theme === 'dark' ? 'text-neutral-200' : 'text-gray-700'
             }`}>
               {t('stats.dailyWorkTime')}
             </h3>
-            <div className="h-64">
+            <div className="h-48">
               <Line data={lineChartData} options={chartOptions} />
             </div>
           </div>
@@ -310,13 +310,13 @@ const Statistics = ({ isOpen, onClose }: StatisticsProps) => {
           <div className={`p-4 rounded-xl lg:col-span-2 ${
             theme === 'dark' ? 'bg-neutral-900 border border-neutral-800' : 'bg-gray-50'
           }`}>
-            <h3 className={`text-lg font-semibold mb-4 text-center ${
+            <h3 className={`text-lg font-semibold mb-3 text-center ${
               theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
             }`}>
               {t('stats.sessionDistribution')} ({viewPeriod === 'week' ? t('stats.last7') : t('stats.last30')})
             </h3>
-            <div className="h-64 flex justify-center">
-              <div className="w-64">
+            <div className="h-56 flex justify-center">
+              <div className="w-56">
                 <Doughnut data={doughnutData} options={doughnutOptions} />
               </div>
             </div>
@@ -324,15 +324,15 @@ const Statistics = ({ isOpen, onClose }: StatisticsProps) => {
         </div>
 
         {/* Insights */}
-        <div className={`mt-6 p-4 rounded-xl ${
+        <div className={`mt-4 p-4 rounded-xl ${
           theme === 'dark' ? 'bg-neutral-900 border border-neutral-800' : 'bg-gray-50'
         }`}>
-          <h3 className={`text-lg font-semibold mb-3 ${
+          <h3 className={`text-lg font-semibold mb-2 ${
             theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
           }`}>
             📈 {t('stats.insights')}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <p className={`text-sm ${
                 theme === 'dark' ? 'text-gray-300' : 'text-gray-600'

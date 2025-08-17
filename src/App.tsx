@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Timer from './Timer'
+import Titlebar from './components/Titlebar'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { SettingsProvider } from './contexts/SettingsContext'
 import { StatisticsProvider } from './contexts/StatisticsContext'
@@ -23,6 +24,7 @@ function App() {
     <ThemeProvider>
       <SettingsProvider>
         <StatisticsProvider>
+          <Titlebar />
           <Timer />
         </StatisticsProvider>
       </SettingsProvider>

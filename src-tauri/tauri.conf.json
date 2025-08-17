@@ -20,6 +20,17 @@
       "notification": {
         "all": true
       },
+      "window": {
+        "all": false,
+        "close": true,
+        "minimize": true,
+        "maximize": true,
+        "unmaximize": true,
+        "setSize": true,
+        "setMinSize": true,
+        "setResizable": true,
+        "setFocus": true
+      },
       "fs": {
         "all": false,
         "readFile": true,
@@ -63,6 +74,7 @@
         "fullscreen": false,
         "resizable": true,
         "title": "YuPomo",
+        "decorations": false,
         "width": 400,
         "height": 600,
         "minWidth": 350,

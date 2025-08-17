@@ -50,3 +50,58 @@ body {
   background-color: #000000; /* true black */
   color: #e5e5e5;
 }
+
+/* --- Custom Tauri titlebar --- */
+.yupomo-titlebar {
+  -webkit-app-region: drag;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  background: transparent;
+  color: inherit;
+  z-index: 100; /* above overlays */
+}
+
+.yupomo-traffic {
+  display: flex; gap: 8px;
+  -webkit-app-region: no-drag; /* allow clicks */
+}
+.yupomo-tb-btn {
+  -webkit-app-region: no-drag; /* ensure clickable */
+  width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+  background-clip: padding-box;
+}
+.yupomo-tb-btn.close { background: #ff5f57; }
+.yupomo-tb-btn.min { background: #ffbd2e; }
+.yupomo-tb-btn.max { background: #28c840; }
+
+/* offset app content so it doesn't sit under the fixed titlebar */
+#root { padding-top: calc(2rem + 32px); }
+
+/* --- Desktop (Tauri) specific adjustments --- */
+/* Remove OS scrollbars in desktop app window */
+.tauri body {
+  overflow: hidden;
+}
+
+/* On desktop, prevent inner panes from creating their own scrollbars */
+.tauri .yupomo-pane {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* On desktop, move modal overlay below the fixed titlebar to keep buttons clickable */
+.tauri .yupomo-overlay {
+  top: 32px; /* same as titlebar height */
+}
+
+/* On desktop, allow scrolling inside modal panes to avoid content cropping */
+.tauri .yupomo-overlay .yupomo-pane {
+  max-height: calc(100vh - 64px) !important; /* viewport minus titlebar and padding */
+  overflow-y: auto !important;
+}
